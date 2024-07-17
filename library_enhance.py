@@ -16,18 +16,35 @@
 library = [("1984", "George Orwell"), ("Brave New World", "Aldous Huxley")]
 
 def add_book():
-    book_title = input("What is the book title? ")
-    author = input("Who is the author? ")
-    for i in enumerate(library):
+    while True:
 
-        if book_title in library[i]:
+    
+        book_title = input("What is the book title? ")
+        author = input("Who is the author? ")
+        new_book = (book_title, author)
+        print(new_book)
+
+        if new_book in library:
             print("Duplicate. That book is already in the library.")
+            break
+            
         else:
-            library.append((book_title, author))
+            library.append(new_book)
             print(f'"{book_title}" by: {author} has been added to the library.')
-            print(library)
+            add_another_book = input("Would you like to add more books? (yes/no) ")
+            if add_another_book == 'yes':
+                continue
+            elif add_another_book == 'no':
+                print(f'Current selections in library: {library}')
+                break
+            else:
+                print('Please answer with yes or no.')
+        
+        
+           
 
 add_book()
+
 
     
 
